@@ -8,7 +8,8 @@ import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { GalleriaModule } from 'primeng/galleria';
 import { CardModule } from 'primeng/card';
-import { PhotoService } from './photo-servic.service';
+import { PhotoService } from './servicios/photo-servic.service';
+import { MenubarModule } from 'primeng/menubar';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,9 @@ import { PhotoService } from './photo-servic.service';
     BrowserModule,
     AppRoutingModule,
     GalleriaModule,
-    CardModule
+    CardModule,
+    MenubarModule
+
 
 
   ],
