@@ -1,3 +1,42 @@
 .flex {
   display: flex;
 }
+.card {
+  display: flex;
+  align-items: center;
+  background-color:rgb(219, 246, 255);
+}
+
+.linkers {
+  padding-left: 50px;
+  display: flex;
+  align-items: center; /* Alinea los enlaces verticalmente en el centro */
+}
+
+.linkers a {
+  margin-right: 20px;
+  white-space: nowrap; /* Evita que los enlaces se dividan en varias líneas */
+  text-decoration: none; /* Elimina el subrayado de los enlaces, si lo deseas */
+  color: #000; /* Cambia el color del texto de los enlaces, si lo deseas */
+}
+
+.social-icons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  padding: 10px;
+}
+
+/* Estilos adicionales para los íconos si es necesario */
+.social-icons i {
+  margin-right: 10px; /* Agrega un margen entre los íconos para evitar que estén demasiado juntos */
+}
+
+
+
+
+.social-icons
+{
+  margin-left: 5px;
+}

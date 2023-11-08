@@ -9,21 +9,32 @@ import { FooterComponent } from './footer/footer.component';
 import { GalleriaModule } from 'primeng/galleria';
 import { CardModule } from 'primeng/card';
 import { PhotoService } from './servicios/photo-servic.service';
-import { MenubarModule } from 'primeng/menubar';
+import { MegaMenuModule } from 'primeng/megamenu';
+import { SplitButtonModule } from 'primeng/splitbutton';
+
+import { FieldsetModule } from 'primeng/fieldset';
+import { AboutComponent } from './about/about.component';
+import { ReviewsComponent } from './reviews/reviews.component';
+import { RomaComponent } from './roma/roma.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuNavComponent,
     HomeComponent,
-    FooterComponent
+    FooterComponent,
+    AboutComponent,
+    ReviewsComponent,
+    RomaComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     GalleriaModule,
     CardModule,
-    MenubarModule
+    MegaMenuModule,
+    SplitButtonModule,
+    FieldsetModule
 
 
 

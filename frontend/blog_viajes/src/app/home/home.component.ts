@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PhotoService } from '../servicios/photo-servic.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +13,8 @@ export class HomeComponent implements OnInit {
   responsiveOptions: any[] | undefined;
   photoService: any;
 
-  constructor(private service: PhotoService) {
+
+  constructor(private service: PhotoService, private router: Router) {
     this.photoService = service;
   }
 
@@ -32,6 +34,13 @@ export class HomeComponent implements OnInit {
               numVisible: 1
           }
       ];
-  }
+
 
 }
+//Hay que hacer el metodo onclick(debe redirigirte a este ruta)
+navegarAOtraPagina() {
+  this.router.navigate(['/roma']);
+}
+  }
+
+

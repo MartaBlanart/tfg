@@ -1,16 +1,34 @@
-<p-card header="Roma">
+<div class="roma" (click)="navegarAOtraPagina()">
+   <img src="assets/roma.jpg" alt="roma" style="max-width: 893px; max-height: 160px;">
+  <p-card header="Roma, la ciudad eterna" >
   <p class="m-0">
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!
+    Roma es conocida como la "Ciudad Eterna" porque en ella el tiempo parece haberse parado hace siglos.
+    Sus monumentos y los restos de imponentes edificios hacen que un paseo por sus calles se convierta en un viaje en el tiempo hasta la época de máximo esplendor de la capital.
   </p>
-
-  <p-galleria [value]="images" [responsiveOptions]="responsiveOptions" [containerStyle]="{ 'max-width': '640px' }">
-    <ng-template pTemplate="item" let-item>
-      <img [src]="item.itemImageSrc" style="width: 100%;" />
-    </ng-template>
-    <ng-template pTemplate="thumbnail" let-item>
-      <div class="grid grid-nogutter justify-content-center">
-        <img [src]="item.thumbnailImageSrc" />
-      </div>
-    </ng-template>
-  </p-galleria>
 </p-card>
+</div>
+
+<div class="paris">
+  <img src="assets/paris.jpg" alt="roma" style="max-width: 893px; max-height: 160px;">
+ <p-card header="París, la ciudad del amor">
+ <p class="m-0">
+  París es la capital de Francia y constituye una de las ciudades más importantes e influyentes del mundo. Desde el punto de vista turístico,
+  París es una de las ciudades más visitadas de Europa.
+  Con nuestra guía de París podrás descubrir todos los secretos de la ciudad además de conseguir los mejores consejos para viajar a París ahorrando dinero.
+</p-card>
+</div>
+
+
+<div class="madrid">
+  <img src="assets/madrid.jpg" alt="roma" style="max-width: 893px; max-height: 160px;">
+ <p-card header="Madrid, la ciudad que nunca duerme">
+ <p class="m-0">
+  Madrid es la capital de España, así como la ciudad española que más visitantes atrae. Con cerca de 10 millones de visitantes al año,
+  Madrid se sitúa entre una de las ciudades más populares de Europa.
+  No importa si vais a pasar una larga temporada o si solo podéis ver Madrid en dos días,
+  el ambiente y la autenticidad de la capital os atrapará para siempre.
+ </p>
+</p-card>
+</div>
+
+
