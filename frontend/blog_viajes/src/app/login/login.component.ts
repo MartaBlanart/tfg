@@ -1,16 +1,16 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { LoginServiceService } from '../login-service.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-  email: string='';
-  password: string='';
+  email: string = '';
+  password: string = '';
 
-   constructor() {}
+  constructor(private loginService: LoginServiceService) {}
 
   @Output() closeModalEvent = new EventEmitter();
 
@@ -18,8 +18,9 @@ export class LoginComponent {
     this.closeModalEvent.emit();
   }
   login() {
-    console.log(this.email);
-    console.log(this.password);
+    const user = { email: this.email, pass: this.password };
+    this.loginService.login(user).subscribe((data) => {
+      console.log(data);
+    });
   }
-
 }

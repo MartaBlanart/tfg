@@ -20,6 +20,7 @@ import {DialogModule} from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
+import { LoginServiceService } from './login-service.service';
 
 
 
@@ -48,13 +49,15 @@ import { FormsModule } from '@angular/forms';
     FieldsetModule,
     DialogModule,
     ButtonModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
 
 
 
   ],
   providers: [
     PhotoService,
+    LoginServiceService
 
   ],
   bootstrap: [AppComponent]
