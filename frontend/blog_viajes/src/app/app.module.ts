@@ -16,6 +16,10 @@ import { FieldsetModule } from 'primeng/fieldset';
 import { AboutComponent } from './about/about.component';
 import { ReviewsComponent } from './reviews/reviews.component';
 import { RomaComponent } from './roma/roma.component';
+import {DialogModule} from 'primeng/dialog';
+import { ButtonModule } from 'primeng/button';
+
+
 
 @NgModule({
   declarations: [
@@ -25,7 +29,11 @@ import { RomaComponent } from './roma/roma.component';
     FooterComponent,
     AboutComponent,
     ReviewsComponent,
-    RomaComponent
+    RomaComponent,
+   
+
+
+
   ],
   imports: [
     BrowserModule,
@@ -34,7 +42,9 @@ import { RomaComponent } from './roma/roma.component';
     CardModule,
     MegaMenuModule,
     SplitButtonModule,
-    FieldsetModule
+    FieldsetModule,
+    DialogModule,
+    ButtonModule
 
 
 
