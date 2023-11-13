@@ -13,9 +13,9 @@
       <a routerLink="/sobre-mi">Sobre mí</a>
     </div>
 
-    <div class="login">
-      <button type="button"  class="btn btn-primary" > <i class="fa-solid fa-user"></i>  Registrarse</button>
-     </div>
+    <button class="btn btn-primary" (click)="openModal()" class="login">Registrarse
+    </button>
+   <app-login *ngIf="modalOpen" (closeModalEvent)="closeModal()"></app-login>
 
   </div>
 

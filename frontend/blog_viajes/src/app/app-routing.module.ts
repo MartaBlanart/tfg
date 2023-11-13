@@ -5,13 +5,15 @@ import { ReviewsComponent } from './reviews/reviews.component';
 import { AboutComponent } from './about/about.component';
 import { RomaComponent } from './roma/roma.component';
 import { FooterComponent } from './footer/footer.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {path:'home', component:HomeComponent},
   {path:'footer', component:FooterComponent},
   {path:'reseñas', component:ReviewsComponent},
   {path:'sobre-mi', component:AboutComponent},
-  {path:'roma', component:RomaComponent}
+  {path:'roma', component:RomaComponent},
+  {path:'login', component:LoginComponent}
 
 ];
 
