@@ -1,0 +1,36 @@
+.footer
+{
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  background-color:rgb(219, 246, 255);
+}
+
+
+
+
+.formulario{
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.social-icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 10px;
+  text-decoration: none;
+  color: #000;
+}
+.icon-link {
+  text-decoration: none;
+  color:#000;
+}
+
+
+.social-icons i {
+  margin-right: 10px;
+}
