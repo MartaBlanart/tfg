@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { LoginServiceService } from '../login-service.service';
+import { LoginServiceService } from '../servicios/register-service.service';
 
 @Component({
   selector: 'app-login',
@@ -10,16 +10,16 @@ export class LoginComponent {
   email: string = '';
   password: string = '';
 
-  constructor(private loginService: LoginServiceService) {}
+  constructor(private registerService: LoginServiceService) {}
 
   @Output() closeModalEvent = new EventEmitter();
 
   closeModal() {
     this.closeModalEvent.emit();
   }
-  login() {
+  register() {
     const user = { email: this.email, pass: this.password };
-    this.loginService.login(user).subscribe((data) => {
+    this.registerService.login(user).subscribe((data) => {
       console.log(data);
     });
   }
