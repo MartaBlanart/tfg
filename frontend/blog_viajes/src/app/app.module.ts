@@ -11,13 +11,20 @@ import { CardModule } from 'primeng/card';
 import { PhotoService } from './servicios/photo-servic.service';
 import { MegaMenuModule } from 'primeng/megamenu';
 import { SplitButtonModule } from 'primeng/splitbutton';
-
+import { HttpClientModule } from "@angular/common/http";
 import { FieldsetModule } from 'primeng/fieldset';
 import { AboutComponent } from './about/about.component';
 import { ReviewsComponent } from './reviews/reviews.component';
 import { RomaComponent } from './roma/roma.component';
 import {DialogModule} from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
+import { LoginComponent } from './login/login.component';
+import { FormsModule } from '@angular/forms';
+import { LoginServiceService } from './servicios/register-service.service';
+import { ParisComponent } from './paris/paris.component';
+import { MadridComponent } from './madrid/madrid.component';
+import { ComentariosComponent } from './comentarios/comentarios.component';
+
 
 
 
@@ -30,7 +37,12 @@ import { ButtonModule } from 'primeng/button';
     AboutComponent,
     ReviewsComponent,
     RomaComponent,
-   
+    LoginComponent,
+    ParisComponent,
+    MadridComponent,
+    ComentariosComponent,
+    
+
 
 
 
@@ -44,13 +56,17 @@ import { ButtonModule } from 'primeng/button';
     SplitButtonModule,
     FieldsetModule,
     DialogModule,
-    ButtonModule
+    ButtonModule,
+    FormsModule,
+    HttpClientModule
 
 
 
   ],
   providers: [
     PhotoService,
+    LoginServiceService
+
   ],
   bootstrap: [AppComponent]
 })

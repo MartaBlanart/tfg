@@ -1,13 +1,73 @@
 <div>
-  <h1> Aqui habra una descripcion de roma</h1>
-  <p-galleria [value]="images" [responsiveOptions]="responsiveOptions" [containerStyle]="{ 'max-width': '280px' }" class="galeria">
-    <ng-template pTemplate="item" let-item>
-      <img [src]="item.itemImageSrc" style="width: 100%;" />
-    </ng-template>
-    <ng-template pTemplate="thumbnail" let-item>
-      <div class="grid grid-nogutter justify-content-center">
-        <img [src]="item.thumbnailImageSrc" />
-      </div>
-    </ng-template>
-  </p-galleria>
+  <h1 style="padding-top: 10px;"> <strong>Roma, la ciudad eterna</strong></h1>
+  <div class="description">
+    <p-galleria [value]="images" [responsiveOptions]="responsiveOptions"  [containerStyle]="{ 'max-width': '850px' }"class="galeria">
+      <ng-template pTemplate="item" let-item>
+        <img [src]="item.itemImageSrc" style="width: 100%;" />
+      </ng-template>
+      <ng-template pTemplate="thumbnail" let-item>
+        <div class="grid grid-nogutter justify-content-center">
+          <img [src]="item.thumbnailImageSrc" style="width: 100%; height: 100%; object-fit: cover;"/>
+        </div>
+      </ng-template>
+    </p-galleria>
+
+    <div class="contentDescription">
+
+        <h2>Más de 15 millones de personas visitan Roma al año y la puntuan con 8,9 de 10, por lo que se hace parada obligatoria. A continuación os relatare mi experiencia
+          y os daré mi opinión sincera sobre la ciudad, estáis listos para esta aventurilla?</h2>
+
+      <h1><strong>COMENZAMOS!!!</strong></h1>
+      <p>
+        Estuve en esta maravillosa ciudad durante una semana, llegué en avión desde mi querida Málaga desde donde hay vuelos directos de unas 3 horillas.
+        Con el auge de los vuelos de bajo coste, el tráfico aéreo de Roma aumenta cada año y actualmente es posible conocer la capital italiana por menos de 50 €. Yo aterrizé
+        en el Aeropuerto Fiumicino desde el cual me fui en taxi por 20 € a mi hotel, el TB Place Roma un espectacular hotel en pleno centro romano con una puntuación en booking de 9,5
+        con una ubicación de 10.<br><br>
+
+        Visité los 10 top monumentos más emblemáticos de Roma, cito: Coliseo Romano, Foro Romano, Plaza Navona, Fontana Di Trevi, Plaza de San Pedro, Basílica de San Pedro,
+        Capilla Sixtina,
+        Plaza de España, Panteón de Agripa y por supuesto las Catacumbas. Aquí os dejo una pequeña descripcion de mis monumentos favoritos : <br><br>
+
+        <strong>Coliseo Romano:</strong> El Coliseo de Roma, llamado en la antigüedad Anfiteatro Flavio, es el monumento más impresionante de Roma. Cada año lo visitan 6 millones
+        de personas. <br><br>
+        <strong>Plaza de San Pedro:</strong>Situada a los pies de la basílica con el mismo nombre, la Plaza de San Pedro es una de las plazas más bonitas del mundo.
+        Construida por Bernini puede acoger más de 300.000 personas. <br><br>
+        <strong>Fontana de Trevi:</strong> La Fontana de Trevi es para nosotros no sólo la fuente más bonita de Roma sino de todo el mundo.
+        Descubre la historia de la fuente más importante de Roma. <br><br>
+
+        En cuanto a la comida investigué los platos típicos de la ciudad y a continuación os dejo también mis favoritos:<br><br>
+
+        <strong> Pizza Frutti di mare:</strong> Maravillosa pizza italiana repleta de buen marisco.<br><br>
+        <strong> Saltimbocca:</strong> Plato tradicional elaborado con ternera , jamón y salvia.<br><br>
+        <strong> Tiramisú:</strong> Postre elaborado con huevos, azúcar, queso mascarpone, bizcochos, café y cacao en polvo.<br><br>
+
+        Como podéis ver por mis platos favoritos la variedad de la comida italiana es genial, no solo pizza y pasta, por lo que os
+        recomiendo investigar e innovar cuando vayáis a los lugares que os voy a mencionar ahora, <strong>SPOILER</strong>
+        os van a encantar!!! <br><br>
+         Para comer en Roma el lugar por excelencia para mi es el barrio del Trastevere, repleto de restaurantes de comida típica
+         italiana. O bien alguna de las plazas
+        más animadas de la ciudad, como la Plaza Navona, el Campo dei Fiori, o el Panteón. Mi favorita Plaza Navona, ya que a parte
+        de restaurates increíbles tiene justo en una de sus calles la mejor heladería de Roma (FrigiDarium) un auténtico vicio.<br><br>
+
+        <strong>Os dejo por aquí una pequeña recomendación:</strong><em>Los romanos no tienen unos horarios de comida demasiado diferentes a los que estamos acostumbrados en España.La comida en
+           Roma suele servirse entre las 13:00 y las 15:00 horas y los horarios de la cena comienzan temprano, sobre las 20:00 horas,
+            y suelen extenderse hasta las 23:00 horas.</em> <br><br>
+
+        Por último me gustaría mencionar que si las compras forman parte de vuestros viajes, en Roma no quedaréis desencantados.
+        A la hora de buscar qué comprar en Roma, en la capital italiana encontraréis desde una gran selección de productos típicos,
+         hasta las mejores tiendas de diseñadores internacionales. Mis paradas obligatorias serían:
+         Via Condotti y alrededores y Via del Corso.<br><br>
+
+         Espero que os hayan gustado mis recomendaciones y que me dejéis las vuestras en comentarios, en mis redes podéis seguir mis viajes más de cerca y mucho
+         más personalmente asique no dudéis en seguirme.<br><br>
+
+
+         <Strong> NOS VEMOS EN LA SIGUIENTE AVENTURA FAMILIA!!!</Strong>
+
+      </p>
+
+    <app-comentarios></app-comentarios>
+    </div>
+  </div>
+
 </div>

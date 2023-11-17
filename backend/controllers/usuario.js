@@ -1,73 +1,73 @@
 'use strict'
 
+const { param } = require('../app')
 //Hay que importar el modelo de datos
-var User= require('../models/usuarios')
+var User = require('../models/usuarios')
 
-var controller={
+var controller = {
 
-    home:function(req,res){
-        return res.status(200).send({
-            message:"Hola"
-        })
-        
-    },
+  home: function (req, res) {
+    return res.status(200).send({
+      message: "Hola"
+    })
 
-    test:function(req,res){
-        return res.status(200).send({
-            message:"Adiós"
-        })
+  },
 
-    },
-     
-    //Método create de una consulta CRUD
-    saveUser:function(req,res){
-      var user=new User();
-      var params = req.body;
-      user.name= params.name;
-      user.surname=params.surname;
-      user.email=params.email;
-      user.pass=params.pass;
+  test: function (req, res) {
+    return res.status(200).send({
+      message: "Adiós"
+    })
 
-    
-        
-        user.save()
-        .then(userStored => {
+  },
+
+  //Método create de una consulta CRUD
+  saveUser: function (req, res) {
+    var user = new User();
+    var params = req.body;
+    user.name = params.name;
+    user.surname = params.surname;
+    user.email = params.email;
+    user.pass = params.pass;
+
+
+
+    user.save()
+      .then(userStored => {
         return res.status(200).send({ user: userStored });
-        })
-        .catch(err => {
+      })
+      .catch(err => {
         return res.status(500).send({ message: 'Error al guardar el documento.' });
-        });
-},
+      });
+  },
 
-//Método getOne de una consulta CRUD
-getUser:function(req,res)
-{
- var userId=req.params.id;
+  //Método getOne de una consulta CRUD
+  getUser: function (req, res) {
+    var userId = req.params.id;
 
 
- User.findById(userId) // Pasar la ID como argumento a findById
- .then(userStored => {
-     if (!userStored) {
-         return res.status(404).send({ message: 'Usuario no encontrado.' });
-     }
-     return res.status(200).send({ user: userStored });
- })
- .catch(err => {
-     console.error(err); // Loguea el error para propósitos de depuración
-     return res.status(500).send({ message: 'Error al buscar el usuario.' });
- });
- 
-},
+    User.findById(userId) // Pasar la ID como argumento a findById
+      .then(userStored => {
+        if (!userStored) {
+          return res.status(404).send({ message: 'Usuario no encontrado.' });
+        }
+        return res.status(200).send({ user: userStored });
+      })
+      .catch(err => {
+        console.error(err); // Loguea el error para propósitos de depuración
+        return res.status(500).send({ message: 'Error al buscar el usuario.' });
+      });
 
-//Método getAll de una consulta CRUD
-getAll: async function (req, res) {
+  },
+
+  //Método getAll de una consulta CRUD
+  getAll: async function (req, res) {
     try {
 
-    //En los parentesis del .find({AQUI SE PODRÍAN PONER CONDICIONES})
-    //El .sort() ordenar y en los parentesis es donde se mete la condicion
+      //En los parentesis del .find({AQUI SE PODRÍAN PONER CONDICIONES})
+      //El .sort() ordenar y en los parentesis es donde se mete la condicion
 
-      const users 
-      = await User.find({ }).sort('year');
+      const users
+        = await User.find({}).sort('year');
       return res.status(200).json({ users });
     } catch (error) {
       console.error(error);
@@ -75,10 +75,10 @@ getAll: async function (req, res) {
     }
   },
   //Método update de una consulta CRUD
-  updateUser: function(req, res) {
+  updateUser: function (req, res) {
     var userId = req.params.id;
     var update = req.body;
-  
+
     User.findByIdAndUpdate(userId, update)
       .then(userUpdate => {
         if (!userUpdate) {
@@ -92,12 +92,12 @@ getAll: async function (req, res) {
         return res.status(500).send({ message: 'Error al actualizar.' });
       });
   },
-   
- //Método delete de una consulta CRUD
 
-deleteUser: function(req, res) {
+  //Método delete de una consulta CRUD
+
+  deleteUser: function (req, res) {
     var userId = req.params.id;
-  
+
     User.findByIdAndDelete(userId)
       .then(user => {
         if (!user) {
@@ -112,13 +112,13 @@ deleteUser: function(req, res) {
 
   //Metodo que nos permite subir archivos a nuestra web
 
-  uploadImages:function(req,res){
-    var userId=req.params.id;
-    var fileName= 'Imagen no subida...';
+  uploadImages: function (req, res) {
+    var userId = req.params.id;
+    var fileName = 'Imagen no subida...';
 
-     
+
   }
 }
 
 //Si yo importo este controller en otra parte del proyecto con un required debería de funcionar 
-module.exports=controller;
+module.exports = controller;

@@ -37,9 +37,15 @@ export class HomeComponent implements OnInit {
 
 
 }
-//Hay que hacer el metodo onclick(debe redirigirte a este ruta)
-navegarAOtraPagina() {
+
+navegarARoma() {
   this.router.navigate(['/roma']);
+}
+navegarAParis() {
+  this.router.navigate(['/paris']);
+}
+navegarAMadrid() {
+  this.router.navigate(['/madrid']);
 }
   }
 

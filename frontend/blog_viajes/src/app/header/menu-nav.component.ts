@@ -10,9 +10,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./menu-nav.component.scss']
 })
 export class MenuNavComponent implements OnInit  {
+ 
 
 
-
+  modalOpen = false;
 
   constructor(private router: Router){
 
@@ -22,6 +23,14 @@ export class MenuNavComponent implements OnInit  {
   }
 
 
+  openModal() {
+    this.modalOpen = true;
+    console.log("se abre modal");
+  }
+
+  closeModal() {
+    this.modalOpen = false;
+  }
 
 
 

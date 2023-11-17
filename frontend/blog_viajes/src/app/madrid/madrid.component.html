@@ -1,0 +1,74 @@
+<div>
+  <h1 style="padding-top: 10px;"> <strong>Madrid, la ciudad que nunca duerme</strong></h1>
+  <div class="description">
+    <p-galleria [value]="images" [responsiveOptions]="responsiveOptions"  [containerStyle]="{ 'max-width': '850px' }"class="galeria">
+      <ng-template pTemplate="item" let-item>
+        <img [src]="item.itemImageSrc" style="width: 100%;" />
+      </ng-template>
+      <ng-template pTemplate="thumbnail" let-item>
+        <div class="grid grid-nogutter justify-content-center">
+          <img [src]="item.thumbnailImageSrc" style="width: 100%; height: 100%; object-fit: cover;"/>
+        </div>
+      </ng-template>
+    </p-galleria>
+
+    <div class="contentDescription">
+
+        <h2>Existen infinidad de lugares que ver en Madrid y la ciudad está llena de rincones para perderse,
+         porque como dice el dicho tan popular <strong>DE MADRID AL CIELO.</strong></h2>
+
+      <h1><strong>EMPECEMOS!!!</strong></h1>
+      <p>
+        Estuve en esta increíble ciudad durante cinco días.Llegué en tren desde Málaga, para mi la mejor forma de llegar a Madrid, no hay nada
+        como la sensación de bajarse en Atocha salir por la puerta y sentir el ritmo frenético pero genial de la ciudad. Desde allí
+        cogí un uber hasta mi hotel. Me hospedé en el  hotel de cuatro estrellas Vincci Capitol en la Gran Vía.
+        Estancia increíble!!! <br><br>
+
+        Visité los 10 top monumentos más emblemáticos de la ciudad, cito:Gran Vía, Puerta del Sol, Plaza Mayor, Puerta de Alcalá,
+        El retiro, el Museo del Prado, Plaza Cibeles, Templo de Debod, Placio Real y el increíble Estadio Santiago Bernabéu. (El último si sois
+        fans del F.C. Barcelona  podéis cambiarlo por el Museo de Cera). Aquí os dejo una pequeña descripción de mis monumentos favoritos : <br><br>
+
+        <strong>Gran Vía:</strong>La Gran Vía es la calle más conocida y transitada de Madrid. Fue construida entre 1910 y
+        1929 para comunicar el barrio de Salamanca con el de Argüelles. <br><br>
+        <strong>Templo de Debod:</strong>El Templo de Debod es uno de los grandes tesoros que esconde Madrid.
+        Fue un regalo de Egipto a España por ayudar a salvar los templos de Nubia.<br><br>
+        <strong>Estadio Santiago Bernabéu:</strong> El Santiago Bernabéu es el estadio del tan querido como odiado Real Madrid Club de Fútbol,
+        además de uno de los lugares más visitados Madrid. <br><br>
+
+        Bueno en cuanto a comida por Madrid os dejo mis favoritos (SPOILER: son lo típico!!!)<br><br>
+
+        <strong> Bocadillo de calamares: </strong> A pesar de que no se trata de una localidad costera, los bocadillos de calamares son
+        una de las opciones que se nos vienen a la cabeza a la hora de buscar qué comer en Madrid.
+         Son especialmente populares los bocadillos de calamares de la Plaza Mayor de Madrid.<br><br>
+        <strong> Cocido madrileño:</strong> Plato muy consistente compuesto por sopa, garbanzos y carne. Si vas en invierno me agradecerás
+        el resto de tu vida esta recomendación, revive a cualquiera.
+        <br><br>
+        <strong>Rosquillas de Santa Clara:</strong>Rosquillas con sabor a anís recubiertas con un glaseado de azucar.<br><br>
+
+        Mis zonas favoritas para comer de Madrid son:
+        <br><br>
+        <strong> Malasaña:</strong> Es la zona más extravagante y original de todo Madrid es el barrio de Malasaña. La decoración y
+        temática de sus bares y restaurantes roza lo excéntrico y no deja indiferente a nadie.
+        <br><br>
+        <strong> Chamberí:</strong>  Si buscáis bares en Madrid y terrazas donde tomar algo, Chamberí es la mejor zona.
+         La calle Ponzano goza de buen ambiente durante prácticamente todo el día.  <br><br>
+
+        <strong>Os dejo por aquí una pequeña recomendación:</strong><em> Si preferís ahorrar a la hora de comer por Madrid, encontraréis gran cantidad de restaurantes a buen precio y locales de tapas en los alrededores de las calles Fuencarral y Gran Vía.</em> <br><br>
+
+        Madrid es una gran ciudad en la que es posible encontrar de todo y para todos los gustos, desde lo más común, hasta lo más específico o estrambótico.
+        Descubre qué comprar en Madrid y las mejores zonas de tiendas. Para mí los imperdibles de compras por Madrid son: el rastros
+        (id asumiendo que quedaréis fascinados y que echaréis un buen rato cotilleando cosas que jamás imaginábais) y la calle Serrano.
+        <br><br>
+
+         Espero que os hayan gustado mis recomendaciones y que me dejéis las vuestras en comentarios, en mis redes podéis seguir mis viajes más de cerca y mucho
+         más personalmente asique no dudéis en seguirme.<br><br>
+
+
+         <Strong> NOS VEMOS EN LA SIGUIENTE AVENTURA FAMILIA!!!</Strong>
+
+      </p>
+     <app-comentarios></app-comentarios>
+    </div>
+  </div>
+
+</div>
