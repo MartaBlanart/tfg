@@ -21,6 +21,10 @@ import { ButtonModule } from 'primeng/button';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { LoginServiceService } from './servicios/register-service.service';
+import { ParisComponent } from './paris/paris.component';
+import { MadridComponent } from './madrid/madrid.component';
+import { ComentariosComponent } from './comentarios/comentarios.component';
+
 
 
 
@@ -34,6 +38,10 @@ import { LoginServiceService } from './servicios/register-service.service';
     ReviewsComponent,
     RomaComponent,
     LoginComponent,
+    ParisComponent,
+    MadridComponent,
+    ComentariosComponent,
+    
 
 
 
