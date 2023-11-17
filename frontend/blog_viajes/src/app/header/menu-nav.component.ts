@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./menu-nav.component.scss']
 })
 export class MenuNavComponent implements OnInit  {
+ 
 
 
   modalOpen = false;
@@ -30,6 +31,7 @@ export class MenuNavComponent implements OnInit  {
   closeModal() {
     this.modalOpen = false;
   }
+
 
 
 }

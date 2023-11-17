@@ -2,7 +2,11 @@
   <div class="modal-content">
     <div class="login">
       <form class="custom-form" method="post">
-        <h1>Registro</h1>
+        <div class="headerModal">
+          <h1>Registro</h1>
+          <button class="close" (click)="closeModal()"><i class="fa-solid fa-circle-xmark"></i></button>
+        </div>
+
         <input
           type="email"
           [(ngModel)]="email"
@@ -17,16 +21,9 @@
           placeholder="Password"
           required="required"
         />
-        <button type="submit" (click)="register()">Log in</button>
+        <button class="greenButton" type="submit" (click)="register()">Registrarse</button>
+
       </form>
     </div>
-
-      <div class="divButton">
-         <button class="close" (click)="closeModal()">Cerrar</button>
-      </div>
-
-
-
-
   </div>
 </div>

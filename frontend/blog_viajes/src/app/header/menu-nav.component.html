@@ -9,11 +9,18 @@
     <div class="linkers">
 
       <a routerLink="/home">Inicio</a>
-      <a routerLink="/reseñas">Reseñas</a>
+      <div class="dropdown">
+        <button class="dropbtn">Ciudades</button>
+        <div class="dropdown-content">
+          <a routerLink="/roma">Roma</a>
+          <a routerLink="/paris">París</a>
+          <a routerLink="/madrid">Madrid</a>
+        </div>
+      </div>
       <a routerLink="/sobre-mi">Sobre mí</a>
     </div>
 
-    <button (click)="openModal()" class="login"><i class="fa-solid fa-user"></i>    Registrarse</button>
+    <button (click)="openModal()" class="login"><i class="fa-solid fa-user"></i> Registrarse</button>
 
    <app-login *ngIf="modalOpen" (closeModalEvent)="closeModal()"></app-login>
 

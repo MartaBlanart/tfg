@@ -1,0 +1,70 @@
+<div>
+  <h1 style="padding-top: 10px;"> <strong>París, la ciudad del amor</strong></h1>
+  <div class="description">
+    <p-galleria [value]="images" [responsiveOptions]="responsiveOptions"  [containerStyle]="{ 'max-width': '850px' }"class="galeria">
+      <ng-template pTemplate="item" let-item>
+        <img [src]="item.itemImageSrc" style="width: 100%;" />
+      </ng-template>
+      <ng-template pTemplate="thumbnail" let-item>
+        <div class="grid grid-nogutter justify-content-center">
+          <img [src]="item.thumbnailImageSrc" style="width: 100%; height: 100%; object-fit: cover;"/>
+        </div>
+      </ng-template>
+    </p-galleria>
+
+    <div class="contentDescription">
+
+        <h2>París capital de Francia, también conocida como la ciudad del amor, constituye una de las ciudades más importantes e influyentes del mundo.
+          <strong>Desde el punto de vista turístico, París es una de las ciudades más visitadas de Europa</strong>. Y tengo que reconocer que una de mis tres
+        ciudades favoritas del mundo. Tengo que reconocer que soy una romántica. </h2>
+
+      <h1><strong>ALLÁ VAMOS!!!</strong></h1>
+      <p>
+        Estuve en esta increíble ciudad durante cinco días (poco para lo que me hubiera gustado, pero París no es precisamente económica). El avión es la forma más común y rápida de llegar a París,
+         por lo que reservé mi vuelo desde Málaga y reservando con antelación no es difícil encontrar vuelos de ida y vuelta desde España
+        por unos 50 €. Llegué al Aeropuerto de Orly y de ahí cogí el metro para llegar a mi hotel. Me hospedé en el Hotel Le Clery,
+        un hotelito de 4 estrellas a 1,5 km del centro. Estancia espectacular!!! <br><br>
+
+        Visité los 10 top monumentos más emblemáticos de la ciudad, cito:la mítica Torre Eiffle, Arco del Triunfo, Barrio Latino, Panteón,
+        Montmatre, Los Inválidos, Campos Eliseos y el impresionante Palacio de Versalles. Aquí os dejo una pequeña descripción de mis monumentos favoritos : <br><br>
+
+        <strong>Notre Dame:</strong> ElLa Catedral de Notre Dame de París es una de las catedrales góticas más antiguas del mundo.
+        Sube a sus torres y disfruta de sus vistas. <br><br>
+        <strong>Campos Elíseos:</strong>Con una longitud de casi dos kilómetros, los Campos Elíseos componen la arteria más bella y
+        conocida de París y una de las avenidas más famosas del mundo.<br><br>
+        <strong>Palacio de Versalles:</strong> Declarado Patrimonio de la Humanidad hace más de treinta años,
+        el Palacio de Versalles es uno de los palacios más conocidos a nivel mundial. <br><br>
+
+        En cuanto a la comida investigué los platos típicos de la ciudad y a continuación os dejo también mis favoritos:<br><br>
+
+        <strong> Boeuf Bourguignon: </strong> Carne de ternera estofada en vino tinto.<br><br>
+        <strong> Quiche Lorraine:</strong> Tarta salada realizada a base de huevos y nata, además de otros ingredientes como carnes y queso.<br><br>
+        <strong> Crepe:</strong> Torta de harina de trigo que puede llevar ingredientes tanto dulces como salados.<br><br>
+
+        Otra cosa imperdible de esta ciudad son los quesos franceses, Francia es uno de los países productores de queso más destacados a nivel mundial.
+        No en vano conocido como “el país de los mil quesos”, en Francia es posible elegir un queso diferente para cada uno de los días del año.
+        Os recomiendo que probéis todos los que podáis.
+        <br><br>
+        Si lo que buscáis es pasar un rato agradable disfrutando de la gastronomía francesa, estas son las mejores zonas para comer en París:
+        el barrio latino y la zona de Montmatre. Pero también es posible encontrar restaurantes y locales de comida para llevar en todos los rincones de la ciudad
+        mucho más baratos.
+        <br><br>
+
+        <strong>Os dejo por aquí una pequeña recomendación:</strong><em>Por lo general los franceses suelen comer y cenar más
+          pronto de lo que acostumbramos en España. La mayoría de los restaurantes de París abren de 12:00 a 15:00 y de 19:30 a 23:00 horas.</em> <br><br>
+
+        Por último me gustaría mencionar que París es una de las ciudades más cotizadas para ir de compras, especialmente para quien busca lujo
+        y moda de grandes diseñadores. Vamos a hacer un repaso a las tiendas y calles comerciales. Mis imperdibles serían: Mercado de la Île de la Cité y la Rue Royale.<br><br>
+
+         Espero que os hayan gustado mis recomendaciones y que me dejéis las vuestras en comentarios, en mis redes podéis seguir mis viajes más de cerca y mucho
+         más personalmente asique no dudéis en seguirme.<br><br>
+
+
+         <Strong> NOS VEMOS EN LA SIGUIENTE AVENTURA FAMILIA!!!</Strong>
+
+      </p>
+      <app-comentarios></app-comentarios>
+    </div>
+  </div>
+
+</div>
