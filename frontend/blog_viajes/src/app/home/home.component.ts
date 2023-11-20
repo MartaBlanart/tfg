@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+
       this.photoService.getImages().then((images: any[] ) => (this.images = images));
       this.responsiveOptions = [
           {
@@ -37,7 +38,11 @@ export class HomeComponent implements OnInit {
 
 
 }
-
+// getUserLogged() {
+//   this.registerService.getUser().subscribe((user) => {
+//     console.log(user);
+//   });
+// }
 navegarARoma() {
   this.router.navigate(['/roma']);
 }
@@ -47,6 +52,7 @@ navegarAParis() {
 navegarAMadrid() {
   this.router.navigate(['/madrid']);
 }
+
   }
 
 
