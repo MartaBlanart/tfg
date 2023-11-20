@@ -1,20 +1,37 @@
 'use strict'
-//Realizar la conexión a la BBDD de mongoDB
+const express = require('express');
+const mongoose = require('mongoose');
+const cors=require('cors');
+const cookieParser=require('cookie-parser')
 
-var mongoose= require('mongoose');
-var app=require('./app')
-var port=3700;
+mongoose.connect('mongodb://127.0.0.1:27017/appViajes', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+})
+    .then(() => {
+        console.log('Connected to the database');
+    })
+    .catch((error) => {
+        console.error('Error connecting to the database:', error);
+    });
 
-mongoose.Promise=global.Promise;
-mongoose.connect('mongodb://127.0.0.1:27017/?directConnection=true')
-        .then(()=>{
-            console.log('Conexión a la BBDD establecida con éxito!!')
+const app = express();
+const port = 6000; 
+app.use(express.json());
 
-            //Creacción del servidor
-            app.listen(port, ()=>{
-                console.log('Servidor corriendo correctamente en la url: localhost:3700')
-            })
+app.use(cookieParser());
+app.use(cors({
+    credentials:true,
+    origin:['http//127.0.0.1:4200']
+}))
 
-        })
-        .catch(err=>console.log(err))
-        
+const routes=require('./routes/routes');
+
+app.use('/api',routes);
+
+app.listen(port, () => {
+    console.log(`Server listening on port ${port}`);
+});
+
+
+

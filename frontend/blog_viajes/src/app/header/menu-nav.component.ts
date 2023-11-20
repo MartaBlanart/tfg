@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MegaMenuItem, MenuItem } from 'primeng/api';
 import { PhotoService } from '../servicios/photo-servic.service';
 import { Router } from '@angular/router';
+import { LoginServiceService } from '../servicios/register-service.service';
 
 
 @Component({
@@ -10,16 +11,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./menu-nav.component.scss']
 })
 export class MenuNavComponent implements OnInit  {
- 
+
 
 
   modalOpen = false;
 
-  constructor(private router: Router){
+  constructor(private router: Router,  public registerService: LoginServiceService){
 
   }
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+
+    this.getUserLogged();
   }
 
 
@@ -32,7 +34,11 @@ export class MenuNavComponent implements OnInit  {
     this.modalOpen = false;
   }
 
-
+  getUserLogged() {
+    this.registerService.getUser().subscribe((user) => {
+      console.log(user);
+    });
+  }
 
 }
 

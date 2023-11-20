@@ -23,7 +23,9 @@ import { FormsModule } from '@angular/forms';
 import { LoginServiceService } from './servicios/register-service.service';
 import { ParisComponent } from './paris/paris.component';
 import { MadridComponent } from './madrid/madrid.component';
+import { CookieService } from 'ngx-cookie-service';
 import { ComentariosComponent } from './comentarios/comentarios.component';
+
 
 
 
@@ -41,7 +43,7 @@ import { ComentariosComponent } from './comentarios/comentarios.component';
     ParisComponent,
     MadridComponent,
     ComentariosComponent,
-    
+
 
 
 
@@ -65,7 +67,8 @@ import { ComentariosComponent } from './comentarios/comentarios.component';
   ],
   providers: [
     PhotoService,
-    LoginServiceService
+    LoginServiceService,
+    [CookieService]
 
   ],
   bootstrap: [AppComponent]
