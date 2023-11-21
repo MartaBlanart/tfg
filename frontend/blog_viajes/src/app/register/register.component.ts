@@ -3,39 +3,40 @@ import { LoginServiceService } from '../servicios/register-service.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.scss']
 })
-export class LoginComponent {
+export class RegisterComponent {
   email: string = '';
   password: string = '';
   name: string = '';
+
+  modalRegisterOpen=false;
 
   constructor(public registerService: LoginServiceService, public router: Router) {}
 
   @Output() closeModalEvent = new EventEmitter();
 
-  closeLoginModal() {
+  closeRegisterModal() {
     this.closeModalEvent.emit();
   }
-  modalRegisterOpen = false;
   register() {
 
     const user = { email: this.email, name: this.name ,password: this.password };
     this.registerService.register(user).subscribe(response => console.log(response));
-    this.closeLoginModal();
+    this.closeRegisterModal();
     this.router.navigate(['/home']);
 
   }
 
-  openRegisterModal() { 
+  openLoginModal() {
     this.modalRegisterOpen = true;
+
   }
 
-  closeRegisterModal() {
+  closeRegisterModal2() {
     this.modalRegisterOpen = false;
-    this.closeLoginModal();
   }
 
 }

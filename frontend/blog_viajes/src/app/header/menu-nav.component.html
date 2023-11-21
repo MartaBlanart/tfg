@@ -20,9 +20,11 @@
       <a routerLink="/sobre-mi">Sobre mí</a>
     </div>
 
-    <button (click)="openModal()" class="login"><i class="fa-solid fa-user"></i> Registrarse</button>
+    <button (click)="openLoginModal()" class="login"><i class="fa-solid fa-user"></i> Iniciar sesión</button>
 
-   <app-login *ngIf="modalOpen" (closeModalEvent)="closeModal()"></app-login>
+   <app-login *ngIf="modalLoginOpen" (closeModalEvent)="closeLoginModal()"></app-login>
+
+
 
   </div>
 

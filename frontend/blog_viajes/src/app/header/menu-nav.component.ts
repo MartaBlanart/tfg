@@ -14,24 +14,26 @@ export class MenuNavComponent implements OnInit  {
 
 
 
-  modalOpen = false;
+  modalLoginOpen = false;
+
 
   constructor(private router: Router,  public registerService: LoginServiceService){
 
   }
   ngOnInit(): void {
 
-    
+
   }
 
 
-  openModal() {
-    this.modalOpen = true;
-    console.log("se abre modal");
+
+  openLoginModal() {
+    this.modalLoginOpen = true;
+
   }
 
-  closeModal() {
-    this.modalOpen = false;
+  closeLoginModal() {
+    this.modalLoginOpen = false;
   }
 
 

@@ -3,9 +3,17 @@
     <div class="login">
       <form class="custom-form" method="post">
         <div class="headerModal">
-          <h1>Inicio sesión</h1>
-          <button class="close" (click)="closeLoginModal()"><i class="fa-solid fa-circle-xmark"></i></button>
+          <h1>Registro</h1>
+          <button class="close" (click)="closeRegisterModal()"><i class="fa-solid fa-circle-xmark"></i></button>
         </div>
+
+        <input
+        type="name"
+        [(ngModel)]="name"
+        name="name"
+        placeholder="Nombre"
+        required="required"
+      />
 
         <input
           type="email"
@@ -23,17 +31,8 @@
           required="required"
         />
         <button class="greenButton" type="submit" (click)="register()">Enviar</button>
-        <div class="register">
-          <h3>Si aún no tienes una cuenta:
-            <a (click)="openRegisterModal()" class="register"> Crear cuenta</a>
-            <app-register *ngIf="modalRegisterOpen" (closeModalEvent)="closeRegisterModal()"></app-register>
-          </h3>
-        </div>
-
 
       </form>
-
     </div>
-
   </div>
 </div>
