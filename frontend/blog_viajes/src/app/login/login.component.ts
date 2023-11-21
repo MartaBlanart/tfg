@@ -11,6 +11,8 @@ export class LoginComponent {
   email: string = '';
   password: string = '';
   name: string = '';
+  errorMessage: string = '';
+
 
   constructor(public registerService: LoginServiceService, public router: Router) {}
 
@@ -32,15 +34,18 @@ export class LoginComponent {
       next: (response) => {
 
         console.log('Inicio de sesión exitoso', response);
+        this.closeRegisterModal();
+        this.router.navigate(['/home']);
       },
       error: (error) => {
-
+        this.errorMessage = 'Contraseña o usuario incorrectos!!!';
         console.error('Error en el inicio de sesión', error);
       },
       complete: () => {
-        
+
       }
     });
+
   }
 
   openRegisterModal() {

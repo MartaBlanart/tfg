@@ -22,6 +22,9 @@
           placeholder="Email"
           required="required"
         />
+        <div *ngIf="errorMessage" class="error-message">
+          {{ errorMessage }}
+        </div>
 
         <input
           type="password"
@@ -30,6 +33,9 @@
           placeholder="Password"
           required="required"
         />
+        <div *ngIf="formErrorMessage" class="error-message">
+          {{ formErrorMessage }}
+        </div>
         <button class="greenButton" type="submit" (click)="register()">Enviar</button>
 
       </form>

@@ -22,6 +22,9 @@
           placeholder="Password"
           required="required"
         />
+        <div *ngIf="errorMessage" class="error-message">
+          {{ errorMessage }}
+        </div>
         <button class="greenButton" type="submit" (click)="login()">Enviar</button>
         <div class="register">
           <h3>Si aún no tienes una cuenta:
