@@ -21,7 +21,7 @@ export class MenuNavComponent implements OnInit  {
   }
   ngOnInit(): void {
 
-    this.getUserLogged();
+    
   }
 
 
@@ -34,11 +34,7 @@ export class MenuNavComponent implements OnInit  {
     this.modalOpen = false;
   }
 
-  getUserLogged() {
-    this.registerService.getUser().subscribe((user) => {
-      console.log(user);
-    });
-  }
+
 
 }
 

@@ -18,14 +18,8 @@ export class LoginComponent {
   closeModal() {
     this.closeModalEvent.emit();
   }
-  login() {
-    const user = { email: this.email, pass: this.password };
-    this.registerService.login(user).subscribe(data => {
-       this.registerService.setToken(data.token);
-       this.router.navigateByUrl("/");
-    },
-    error => {
-      console.log(error);
-    });
+  register() {
+    const user = { email: this.email, password: this.password };
+    this.registerService.register(user).subscribe(response => console.log(response));
   }
 }
