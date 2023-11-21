@@ -10,7 +10,7 @@ import { ParisComponent } from './paris/paris.component';
 import { MadridComponent } from './madrid/madrid.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  
   {path:'home', component:HomeComponent},
   {path:'footer', component:FooterComponent},
   {path:'reseñas', component:ReviewsComponent},

@@ -2,9 +2,11 @@ const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 const User = require('../model/users');
 const jwt=require('jsonwebtoken');
+const cors=require('cors');
 
-router.post('/register', async (req, res) => {
+router.post('/register',cors(), async (req, res) => {
     try {
+      
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(req.body.password, salt);
 
@@ -94,5 +96,5 @@ router.post('/logout', (req,res)=>{
     })
 
 })
-
+router.options('/register', cors());
 module.exports = router;

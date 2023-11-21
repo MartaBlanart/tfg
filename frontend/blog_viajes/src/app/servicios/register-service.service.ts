@@ -1,4 +1,4 @@
-import { Injectable, OnInit} from '@angular/core';
+import { Injectable} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -13,6 +13,7 @@ export class LoginServiceService  {
   constructor(private http: HttpClient) { }
 
   register(user: any): Observable<any> {
+    console.log(user)
     return this.http.post(`${this.baseUrl}/register`, user);
   }
 

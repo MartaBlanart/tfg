@@ -3,9 +3,18 @@
     <div class="login">
       <form class="custom-form" method="post">
         <div class="headerModal">
-          <h1>Iniciar sesión</h1>
+          <h1>Registro</h1>
           <button class="close" (click)="closeModal()"><i class="fa-solid fa-circle-xmark"></i></button>
         </div>
+
+
+        <input
+        type="name"
+        [(ngModel)]="name"
+        name="name"
+        placeholder="Nombre"
+        required="required"
+      />
 
         <input
           type="email"
@@ -14,6 +23,7 @@
           placeholder="Email"
           required="required"
         />
+
         <input
           type="password"
           [(ngModel)]="password"

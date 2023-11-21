@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   email: string = '';
   password: string = '';
+  name: string = '';
 
   constructor(public registerService: LoginServiceService, public router: Router) {}
 
@@ -19,7 +20,11 @@ export class LoginComponent {
     this.closeModalEvent.emit();
   }
   register() {
-    const user = { email: this.email, password: this.password };
+
+    const user = { email: this.email, name: this.name ,password: this.password };
     this.registerService.register(user).subscribe(response => console.log(response));
+    this.closeModal();
+    this.router.navigate(['/home']);
+
   }
 }

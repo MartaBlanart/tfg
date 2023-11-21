@@ -38,11 +38,7 @@ export class HomeComponent implements OnInit {
 
 
 }
-// getUserLogged() {
-//   this.registerService.getUser().subscribe((user) => {
-//     console.log(user);
-//   });
-// }
+
 navegarARoma() {
   this.router.navigate(['/roma']);
 }
