@@ -20,16 +20,30 @@ export class LoginComponent {
     this.closeModalEvent.emit();
   }
   modalRegisterOpen = false;
-  register() {
 
-    const user = { email: this.email, name: this.name ,password: this.password };
-    this.registerService.register(user).subscribe(response => console.log(response));
-    this.closeLoginModal();
-    this.router.navigate(['/home']);
+  login() {
+    const credentials = {
+      email: this.email,
+      password: this.password
+    };
 
+
+    this.registerService.login(credentials).subscribe({
+      next: (response) => {
+
+        console.log('Inicio de sesión exitoso', response);
+      },
+      error: (error) => {
+
+        console.error('Error en el inicio de sesión', error);
+      },
+      complete: () => {
+        
+      }
+    });
   }
 
-  openRegisterModal() { 
+  openRegisterModal() {
     this.modalRegisterOpen = true;
   }
 
