@@ -6,6 +6,8 @@ import { LoginServiceService } from '../servicios/register-service.service';
 import { catchError } from 'rxjs';
 
 
+
+
 @Component({
   selector: 'app-menu-nav',
   templateUrl: './menu-nav.component.html',
@@ -24,24 +26,7 @@ export class MenuNavComponent implements OnInit  {
   ngOnInit(): void {
 
   }
-  userLogged() {
-    this.registerService.getUser(getToken())
-      .pipe(
-        catchError((error: any) => {
-          if (error.status === 401) {
-            console.error('Error de autenticación. Por favor, inicia sesión nuevamente.');
-          } else {
-            console.error('Error al obtener información del usuario', error);
-          }
-          throw error; // Rechaza el error para que pueda ser manejado por el suscriptor
-        })
-      )
-      .subscribe(
-        (user) => {
-          this.welcomeMessage = `Bienvenido, ${user.name}!`;
-        }
-      );
-  }
+
 
 
   openLoginModal() {

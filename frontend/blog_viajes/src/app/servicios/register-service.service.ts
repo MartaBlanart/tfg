@@ -1,5 +1,5 @@
 import { Injectable} from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 
@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class LoginServiceService  {
+
 
   private baseUrl = 'http://127.0.0.1:443/api';
 
@@ -20,20 +21,31 @@ export class LoginServiceService  {
   login(credentials: any): Observable<any> {
 
     return this.http.post(`${this.baseUrl}/login`, credentials);
+
   }
 
   logout(): Observable<any> {
     return this.http.post(`${this.baseUrl}/logout`, {});
+    
   }
 
   getUser(): Observable<any> {
+    const token = this.getToken(); // Asegúrate de implementar tu propia lógica para obtener el token
+    console.log("Este es el token:" + token)
+    if (!token) {
+      // Manejar la falta de token, por ejemplo, redirigir a la página de inicio de sesión
+      console.error("No se ha podido obtener el token")
+    }
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `${token}`
+    });
     const options = {
-      withCredentials: true,
-
-
+      headers: headers,
+      withCredentials: true
     };
 
-   return this.http.get(`${this.baseUrl}/user`,options);
+    return this.http.get(`${this.baseUrl}/user`, options);
 
 
   }
@@ -45,7 +57,10 @@ export class LoginServiceService  {
 
     // Método para obtener el token del Local Storage
     getToken(): string | null {
-      return localStorage.getItem('jwt');
+      var token= localStorage.getItem('jwt');
+      console.log(token);
+      return token;
+
     }
 
     // Método para borrar el token del Local Storage

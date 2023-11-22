@@ -24,14 +24,18 @@ export class LoginComponent {
   }
   modalRegisterOpen = false;
 
+
+
   login() {
     const credentials = {
       email: this.email,
       password: this.password
     };
 
+
     this.registerService.login(credentials).subscribe({
       next: (response) => {
+
         console.log('Inicio de sesión exitoso', response);
 
         if (response && response.token) {
@@ -40,6 +44,7 @@ export class LoginComponent {
 
           // Cierra el modal de inicio de sesión
           this.closeLoginModal();
+
         } else {
           console.error('Token no encontrado en la respuesta del servidor.');
         }
@@ -48,16 +53,44 @@ export class LoginComponent {
         console.error('Error en el inicio de sesión', error);
       },
       complete: () => {
-        // Puedes realizar acciones adicionales después de la operación de inicio de sesión
+        var user = this.userLogged();
+        this.userLogged().then((userName) => {
+          this.menuNav.welcomeMessage = 'Bienvenido ' + userName.name;
+        });
       }
+    });
+  }
+  userLogged(): Promise<LoginComponent> {
+    return new Promise((resolve, reject) => {
+      // Verifica si hay un token antes de hacer la solicitud al servidor
+      this.registerService.getUser().subscribe({
+        next: (response) => {
+          console.log('Obtencion de usuario correcto', response);
+
+          if (response && response.user) {
+            const userName = response.user;
+            
+            resolve(userName); // Resuelve la promesa con el nombre del usuario
+          } else {
+            console.error('Usuario no encontrado en la respuesta del servidor.');
+            reject('Usuario no encontrado'); // Rechaza la promesa con un mensaje de error
+          }
+        },
+        error: (error) => {
+          console.error('Error en el inicio de sesión', error);
+          reject(error); // Rechaza la promesa con el error recibido
+        },
+        complete: () => {
+          // Puedes realizar acciones adicionales después de la operación de inicio de sesión
+        }
+      });
     });
   }
 
 
-
   openRegisterModal() {
     this.modalRegisterOpen = true;
-    this.menuNav.userLogged();
+
   }
 
   closeRegisterModal() {

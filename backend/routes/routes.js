@@ -67,8 +67,7 @@ router.post('/login', async (req, res) => {
 
 router.get('/user', async (req, res) => {
     try {
-        const cookie = req.cookies['jwt'];
-
+        const cookie = req.headers.authorization;
         if (!cookie) {
             return res.status(401).send({
                 message: 'unauthentication cookie'
@@ -93,7 +92,7 @@ router.get('/user', async (req, res) => {
 
         const { password, ...data } = await user.toJSON();
 
-        res.send(data);
+        res.send({user: user});
     } catch (e) {
         return res.status(401).send({
             message: 'unauthentication'
@@ -103,7 +102,7 @@ router.get('/user', async (req, res) => {
 
 router.post('/logout', (req, res) => {
     // Limpiar la cookie al hacer logout
-    res.cookie('jwt', '', { maxAge: 0, sameSite: 'none' });
+    res.cookie('jwt', '', { maxAge: 0, sameSite: 'Lax' });
 
     res.send({
         message: 'success'

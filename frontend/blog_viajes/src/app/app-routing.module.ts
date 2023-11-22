@@ -11,7 +11,8 @@ import { MadridComponent } from './madrid/madrid.component';
 import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
-
+  
+  { path: '', component: HomeComponent },
   {path:'home', component:HomeComponent},
   {path:'footer', component:FooterComponent},
   {path:'reseñas', component:ReviewsComponent},
