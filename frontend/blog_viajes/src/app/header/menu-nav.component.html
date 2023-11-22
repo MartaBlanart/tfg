@@ -23,7 +23,7 @@
     <button *ngIf="mostrarBotonLogin" (click)="openLoginModal()" class="login"><i class="fa-solid fa-user"></i> Iniciar sesión</button>
     <div class="welcome" *ngIf="!mostrarBotonLogin">
      {{ welcomeMessage }}
-    <button *ngIf="!mostrarBotonLogin" (click)="openLoginModal()" class="logout">Cerrar sesión <i class="fa-solid fa-right-from-bracket"></i></button>
+    <button *ngIf="!mostrarBotonLogin" (click)="logOut()" class="logout">Cerrar sesión <i class="fa-solid fa-right-from-bracket"></i></button>
   </div>
    <app-login *ngIf="modalLoginOpen" (closeModalEvent)="closeLoginModal()"></app-login>
 

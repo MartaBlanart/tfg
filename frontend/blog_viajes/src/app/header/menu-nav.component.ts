@@ -27,9 +27,12 @@ export class MenuNavComponent implements OnInit  {
 
   }
 
-
+  logOut(){
+    this.registerService.clearToken();
+    this.mostrarBotonLogin = !this.mostrarBotonLogin;
+  }
   ocultarBotonLogin() {
-    this.mostrarBotonLogin = false;
+    this.mostrarBotonLogin = !this.mostrarBotonLogin;
   }
   openLoginModal() {
     this.modalLoginOpen = true;
