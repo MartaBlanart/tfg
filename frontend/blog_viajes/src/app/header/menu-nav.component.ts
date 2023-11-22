@@ -19,7 +19,7 @@ export class MenuNavComponent implements OnInit  {
 
   modalLoginOpen = false;
 
-
+  mostrarBotonLogin: boolean = true;
   constructor(public router: Router,  public registerService: LoginServiceService){
 
   }
@@ -28,7 +28,9 @@ export class MenuNavComponent implements OnInit  {
   }
 
 
-
+  ocultarBotonLogin() {
+    this.mostrarBotonLogin = false;
+  }
   openLoginModal() {
     this.modalLoginOpen = true;
 

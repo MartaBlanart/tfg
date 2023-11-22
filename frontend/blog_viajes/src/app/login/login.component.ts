@@ -55,7 +55,9 @@ export class LoginComponent {
       complete: () => {
         var user = this.userLogged();
         this.userLogged().then((userName) => {
-          this.menuNav.welcomeMessage = 'Bienvenido ' + userName.name;
+          this.menuNav.welcomeMessage = 'Bienvenid@ ' + userName.name;
+          this.menuNav.ocultarBotonLogin();
+
         });
       }
     });
@@ -69,7 +71,7 @@ export class LoginComponent {
 
           if (response && response.user) {
             const userName = response.user;
-            
+
             resolve(userName); // Resuelve la promesa con el nombre del usuario
           } else {
             console.error('Usuario no encontrado en la respuesta del servidor.');
