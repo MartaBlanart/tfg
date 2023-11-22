@@ -3,6 +3,9 @@ import { MegaMenuItem, MenuItem } from 'primeng/api';
 import { PhotoService } from '../servicios/photo-servic.service';
 import { Router } from '@angular/router';
 import { LoginServiceService } from '../servicios/register-service.service';
+import { catchError } from 'rxjs';
+
+
 
 
 @Component({
@@ -12,33 +15,35 @@ import { LoginServiceService } from '../servicios/register-service.service';
 })
 export class MenuNavComponent implements OnInit  {
 
+  welcomeMessage: string = '';
 
+  modalLoginOpen = false;
 
-  modalOpen = false;
-
-  constructor(private router: Router,  public registerService: LoginServiceService){
+  mostrarBotonLogin: boolean = true;
+  constructor(public router: Router,  public registerService: LoginServiceService){
 
   }
   ngOnInit(): void {
 
-    this.getUserLogged();
+  }
+
+  logOut(){
+    this.registerService.clearToken();
+    this.mostrarBotonLogin = !this.mostrarBotonLogin;
+  }
+  ocultarBotonLogin() {
+    this.mostrarBotonLogin = !this.mostrarBotonLogin;
+  }
+  openLoginModal() {
+    this.modalLoginOpen = true;
+
+  }
+
+  closeLoginModal() {
+    this.modalLoginOpen = false;
   }
 
 
-  openModal() {
-    this.modalOpen = true;
-    console.log("se abre modal");
-  }
-
-  closeModal() {
-    this.modalOpen = false;
-  }
-
-  getUserLogged() {
-    this.registerService.getUser().subscribe((user) => {
-      console.log(user);
-    });
-  }
 
 }
 

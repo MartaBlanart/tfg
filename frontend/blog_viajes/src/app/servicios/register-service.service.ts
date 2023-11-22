@@ -1,42 +1,75 @@
-import { Inject, Injectable, OnInit, PLATFORM_ID } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, ReplaySubject } from 'rxjs';
-import { CookieService } from 'ngx-cookie-service';
-import { DOCUMENT } from '@angular/common';
+import { Injectable} from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root',
 })
-export class LoginServiceService extends CookieService {
+export class LoginServiceService  {
 
-  private baseUrl = 'http://127.0.0.1:3700';
-  constructor(
-    private http: HttpClient,
-    @Inject(DOCUMENT) private _document: any,
-    @Inject(PLATFORM_ID) private _platformId: any
-  ) {
-    super(_document, _platformId);
+
+  private baseUrl = 'http://127.0.0.1:443/api';
+
+  constructor(private http: HttpClient) { }
+
+  register(user: any): Observable<any> {
+    console.log(user)
+    return this.http.post(`${this.baseUrl}/register`, user);
   }
 
-  login(user: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/api/login`, user);
-  }
+  login(credentials: any): Observable<any> {
 
-  setToken(token: string) {
-    this.set('token', token);
-  }
-
-  getToken() {
-    console.log(this.get('token'));
-    return this.get('token');
-  }
-  getUser() {
-    console.log(this.getToken());
-    return this.http.get(`${this.baseUrl}/api/email:?SOYJUANES2`);
+    return this.http.post(`${this.baseUrl}/login`, credentials);
 
   }
-  getUserLogged() {
-    const token = this.getToken();
-    // Aquí iría el endpoint para devolver el usuario para un token
+
+  logout(): Observable<any> {
+    return this.http.post(`${this.baseUrl}/logout`, {});
+    
+  }
+
+  getUser(): Observable<any> {
+    const token = this.getToken(); // Asegúrate de implementar tu propia lógica para obtener el token
+    console.log("Este es el token:" + token)
+    if (!token) {
+      // Manejar la falta de token, por ejemplo, redirigir a la página de inicio de sesión
+      console.error("No se ha podido obtener el token")
+    }
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `${token}`
+    });
+    const options = {
+      headers: headers,
+      withCredentials: true
+    };
+
+    return this.http.get(`${this.baseUrl}/user`, options);
+
+
+  }
+
+    // Método para guardar el token en el Local Storage
+    saveToken(token: string): void {
+      localStorage.setItem('jwt', token);
+    }
+
+    // Método para obtener el token del Local Storage
+    getToken(): string | null {
+      var token= localStorage.getItem('jwt');
+      console.log(token);
+      return token;
+
+    }
+
+    // Método para borrar el token del Local Storage
+    clearToken(): void {
+      localStorage.removeItem('jwt');
+    }
+
+  // Ejemplo de cómo enviar datos en una solicitud POST
+  enviarDatosAlBackend(user: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/register`, user);
   }
 }

@@ -16,14 +16,11 @@ mongoose.connect('mongodb://127.0.0.1:27017/appViajes', {
     });
 
 const app = express();
-const port = 6000; 
+const port = 443; 
+app.use(cors({ origin: 'http://localhost:4200', credentials: true }));
+app.use(cookieParser());
 app.use(express.json());
 
-app.use(cookieParser());
-app.use(cors({
-    credentials:true,
-    origin:['http//127.0.0.1:4200']
-}))
 
 const routes=require('./routes/routes');
 

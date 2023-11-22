@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { LoginServiceService } from '../servicios/register-service.service';
+import { MenuNavComponent } from '../header/menu-nav.component';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,22 +11,93 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   email: string = '';
   password: string = '';
+  name: string = '';
+  errorMessage: string = '';
 
-  constructor(public registerService: LoginServiceService, public router: Router) {}
+
+  constructor(public registerService: LoginServiceService, public router: Router, public menuNav: MenuNavComponent) {}
 
   @Output() closeModalEvent = new EventEmitter();
 
-  closeModal() {
+  closeLoginModal() {
     this.closeModalEvent.emit();
   }
+  modalRegisterOpen = false;
+
+
+
   login() {
-    const user = { email: this.email, pass: this.password };
-    this.registerService.login(user).subscribe(data => {
-       this.registerService.setToken(data.token);
-       this.router.navigateByUrl("/");
-    },
-    error => {
-      console.log(error);
+    const credentials = {
+      email: this.email,
+      password: this.password
+    };
+
+
+    this.registerService.login(credentials).subscribe({
+      next: (response) => {
+
+        console.log('Inicio de sesión exitoso', response);
+
+        if (response && response.token) {
+          // Guarda el token en el Local Storage
+          this.registerService.saveToken(response.token);
+
+          // Cierra el modal de inicio de sesión
+          this.closeLoginModal();
+
+        } else {
+          console.error('Token no encontrado en la respuesta del servidor.');
+        }
+      },
+      error: (error) => {
+        console.error('Error en el inicio de sesión', error);
+      },
+      complete: () => {
+        var user = this.userLogged();
+        this.userLogged().then((userName) => {
+          this.menuNav.welcomeMessage = 'Bienvenid@ ' + userName.name;
+          this.menuNav.ocultarBotonLogin();
+
+        });
+      }
     });
   }
+  userLogged(): Promise<LoginComponent> {
+    return new Promise((resolve, reject) => {
+      // Verifica si hay un token antes de hacer la solicitud al servidor
+      this.registerService.getUser().subscribe({
+        next: (response) => {
+          console.log('Obtencion de usuario correcto', response);
+
+          if (response && response.user) {
+            const userName = response.user;
+
+            resolve(userName); // Resuelve la promesa con el nombre del usuario
+          } else {
+            console.error('Usuario no encontrado en la respuesta del servidor.');
+            reject('Usuario no encontrado'); // Rechaza la promesa con un mensaje de error
+          }
+        },
+        error: (error) => {
+          console.error('Error en el inicio de sesión', error);
+          reject(error); // Rechaza la promesa con el error recibido
+        },
+        complete: () => {
+          // Puedes realizar acciones adicionales después de la operación de inicio de sesión
+        }
+      });
+    });
+  }
+
+
+  openRegisterModal() {
+    this.modalRegisterOpen = true;
+
+  }
+
+  closeRegisterModal() {
+    this.modalRegisterOpen = false;
+    this.closeLoginModal();
+  }
+
 }

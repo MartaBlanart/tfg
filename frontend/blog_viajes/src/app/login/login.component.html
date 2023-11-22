@@ -3,8 +3,8 @@
     <div class="login">
       <form class="custom-form" method="post">
         <div class="headerModal">
-          <h1>Iniciar sesión</h1>
-          <button class="close" (click)="closeModal()"><i class="fa-solid fa-circle-xmark"></i></button>
+          <h1>Inicio sesión</h1>
+          <button class="close" (click)="closeLoginModal()"><i class="fa-solid fa-circle-xmark"></i></button>
         </div>
 
         <input
@@ -14,6 +14,7 @@
           placeholder="Email"
           required="required"
         />
+
         <input
           type="password"
           [(ngModel)]="password"
@@ -21,9 +22,21 @@
           placeholder="Password"
           required="required"
         />
+        <div *ngIf="errorMessage" class="error-message">
+          {{ errorMessage }}
+        </div>
         <button class="greenButton" type="submit" (click)="login()">Enviar</button>
+        <div class="register">
+          <h3>Si aún no tienes una cuenta:
+            <a (click)="openRegisterModal()" class="register"> Crear cuenta</a>
+            <app-register *ngIf="modalRegisterOpen" (closeModalEvent)="closeRegisterModal()"></app-register>
+          </h3>
+        </div>
+
 
       </form>
+
     </div>
+
   </div>
 </div>

@@ -2,7 +2,7 @@
 
 
   <div class="logo">
-    <img src="assets/logo.jpg" alt="logo" (click)="getUserLogged()"style="max-width: 100px; padding: 10px;">
+    <img src="assets/logo.jpg" alt="logo"  style="max-width: 100px; padding: 10px;">
   </div>
 
 
@@ -20,9 +20,14 @@
       <a routerLink="/sobre-mi">Sobre mí</a>
     </div>
 
-    <button (click)="openModal()" class="login"><i class="fa-solid fa-user"></i> Registrarse</button>
+    <button *ngIf="mostrarBotonLogin" (click)="openLoginModal()" class="login"><i class="fa-solid fa-user"></i> Iniciar sesión</button>
+    <div class="welcome" *ngIf="!mostrarBotonLogin">
+     {{ welcomeMessage }}
+    <button *ngIf="!mostrarBotonLogin" (click)="logOut()" class="logout">Cerrar sesión <i class="fa-solid fa-right-from-bracket"></i></button>
+  </div>
+   <app-login *ngIf="modalLoginOpen" (closeModalEvent)="closeLoginModal()"></app-login>
 
-   <app-login *ngIf="modalOpen" (closeModalEvent)="closeModal()"></app-login>
+
 
   </div>
 

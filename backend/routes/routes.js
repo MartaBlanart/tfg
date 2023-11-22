@@ -1,7 +1,15 @@
 const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 const User = require('../model/users');
-const jwt=require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
+const cors = require('cors');
+
+// Configuración básica de CORS
+const corsOptions = {
+    origin: 'http://localhost:4200', // Reemplaza con tu URL de cliente
+    credentials: true,
+};
+router.use(cors(corsOptions));
 
 router.post('/register', async (req, res) => {
     try {
@@ -40,59 +48,66 @@ router.post('/login', async (req, res) => {
             });
         }
 
-        const token= jwt.sign({_id:user._id}, "secret");
-        res.cookie('jwt', token,{
-            httpOnly:true,
-            maxAge: 24*60*60*1000,
+        const token = jwt.sign({ _id: user._id }, "secret");
 
-
-        })
-
-
-        res.send({
-            message:'succes'
+        // Configuración de la cookie
+        res.cookie('jwt', token, {
+            httpOnly: true,
+            maxAge: 24 * 60 * 60 * 1000,
+            secure: process.env.NODE_ENV === 'production' ? true : false,
+            sameSite: 'Lax', // Necesario si se envía la cookie entre dominios
         });
+
+        res.send({ message: 'success', token: token });
     } catch (error) {
         console.error('Error logging in:', error);
         res.status(500).send('Internal Server Error');
     }
 });
 
-router.get('/user', async (req,res)=>{
-    try{
-        const cookie=req.cookies['jwt'];
-        const claims=jwt.verify(cookie,'secret')
-      
-        if(!claims){
+router.get('/user', async (req, res) => {
+    try {
+        const cookie = req.headers.authorization;
+        if (!cookie) {
             return res.status(401).send({
-                message:'unauthentication'
-    
-            })
+                message: 'unauthentication cookie'
+            });
         }
-        const user= await User.findOne({_id:claims._id});
-        
-    
-        const {password, ...data}= await user.toJSON()
 
-        res.send(data);
-        
+        const claims = jwt.verify(cookie, 'secret');
 
-    } catch(e){
+        if (!claims || !claims._id) {
+            return res.status(401).send({
+                message: 'unauthentication claims'
+            });
+        }
+
+        const user = await User.findOne({ _id: claims._id });
+
+        if (!user) {
+            return res.status(401).send({
+                message: 'unauthentication'
+            });
+        }
+
+        const { password, ...data } = await user.toJSON();
+
+        res.send({user: user});
+    } catch (e) {
         return res.status(401).send({
-            message:'unauthentication'
+            message: 'unauthentication'
+        });
+    }
+});
 
-        })}
-   
-
-})
-
-router.post('/logout', (req,res)=>{
-    res.cookie('jwt', '', {maxAge:0})
+router.post('/logout', (req, res) => {
+    // Limpiar la cookie al hacer logout
+    res.cookie('jwt', '', { maxAge: 0, sameSite: 'Lax' });
 
     res.send({
-        message:'success'
-    })
+        message: 'success'
+    });
+});
 
-})
-
+router.options('/register', cors());
 module.exports = router;
