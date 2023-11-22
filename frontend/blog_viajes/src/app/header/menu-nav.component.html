@@ -21,7 +21,9 @@
     </div>
 
     <button (click)="openLoginModal()" class="login"><i class="fa-solid fa-user"></i> Iniciar sesión</button>
-
+    <div>
+      <p>{{ welcomeMessage }}</p>
+    </div>
    <app-login *ngIf="modalLoginOpen" (closeModalEvent)="closeLoginModal()"></app-login>
 
 
