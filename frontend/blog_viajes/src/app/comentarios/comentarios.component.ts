@@ -4,6 +4,7 @@ import { CommentService } from '../comment.service';
 import { LoginServiceService } from '../servicios/register-service.service';
 import { User } from '../model/user.model';
 import { CommentData } from '../model/comment.model';
+import { ModalService } from '../modal.service';
 
 
 
@@ -19,7 +20,8 @@ export class ComentariosComponent implements OnInit{
 
   constructor(
     private commentService: CommentService,
-    private registerService: LoginServiceService
+    private registerService: LoginServiceService,
+    private modalService: ModalService
 
   ) {}
   ngOnInit() {
@@ -27,19 +29,29 @@ export class ComentariosComponent implements OnInit{
   }
   async addComment() {
 
-
+    try {
     var user: User =await this.registerService.getObtenerUsuario();
+    console.log("holapepito");
+    if(!user){
+      console.log("HOLA!");
+      this.modalService.openLoginModal();
+    } else{
+      console.log("HOLA2!");
+      const commentData: CommentData = { content: this.newComment, username: user.name };
+      console.log(commentData);
+      console.log(this.reviewId);
+      this.commentService.addCommentToReview(this.reviewId, commentData)
+        .subscribe((response) => {
+          console.log('Comentario agregado:', response);
+          this.showComment();
+          this.newComment='';
+        });
+    }
+  } catch (error) {
+    console.error('Error in addComment:', error);
+  }
 
 
-    const commentData: CommentData = { content: this.newComment, username: user.name };
-    console.log(commentData);
-    console.log(this.reviewId);
-    this.commentService.addCommentToReview(this.reviewId, commentData)
-      .subscribe((response) => {
-        console.log('Comentario agregado:', response);
-        this.showComment();
-        this.newComment='';
-      });
 
 
 
