@@ -53,8 +53,7 @@ export class LoginComponent {
         console.error('Error en el inicio de sesión', error);
       },
       complete: () => {
-        var user = this.userLogged();
-        this.userLogged().then((userName) => {
+          this.userLogged().then((userName) => {
           this.menuNav.welcomeMessage = 'Bienvenid@ ' + userName.name;
           this.menuNav.ocultarBotonLogin();
 

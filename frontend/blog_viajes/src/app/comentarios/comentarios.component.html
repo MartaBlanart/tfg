@@ -1,5 +1,5 @@
-<h2>Comentarios</h2>
-<div class="commentsBoard">
-  <textarea class="comment" placeholder="Escriba su comentario aquí..." ></textarea>
-  <button type="submit" class="buttonComment"> <i class="fa-solid fa-comments"></i> Comentar </button>
+<div>
+  <input type="text" [(ngModel)]="newComment" placeholder="Nuevo comentario">
+  <button (click)="addComment()">Agregar Comentario</button>
+
 </div>

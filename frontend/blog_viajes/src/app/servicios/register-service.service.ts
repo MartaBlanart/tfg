@@ -1,6 +1,7 @@
 import { Injectable} from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { User } from '../user/user.model';
 
 
 @Injectable({
@@ -26,7 +27,7 @@ export class LoginServiceService  {
 
   logout(): Observable<any> {
     return this.http.post(`${this.baseUrl}/logout`, {});
-    
+
   }
 
   getUser(): Observable<any> {
@@ -48,6 +49,24 @@ export class LoginServiceService  {
     return this.http.get(`${this.baseUrl}/user`, options);
 
 
+  }
+  getObtenerUsuario(): Promise<User> {
+    return new Promise((resolve, reject) => {
+      this.getUser().subscribe(
+        (userData: any) => {
+          const user: User = {
+            email: userData.user.email,
+            name: userData.user.name,
+            password: userData.user.password
+          };
+          console.log(user.email)
+          resolve(user);
+        },
+        (error) => {
+          reject(error);
+        }
+      );
+    });
   }
 
     // Método para guardar el token en el Local Storage
