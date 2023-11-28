@@ -18,7 +18,7 @@ export class CommentService {
     return this.http.post(url, commentData);
   }
 
-  getCommentsForReview(reviewId: string): Observable<Comment[]> {
+  getCommentsForReview(reviewId: number): Observable<Comment[]> {
     const url = `${this.apiUrl}/reviews/${reviewId}/comments`;
     return this.http.get<Comment[]>(url);
   }

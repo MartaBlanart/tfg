@@ -114,5 +114,6 @@ router.post('/logout', (req, res) => {
 router.options('/register', cors());
 
 router.post('/reviews/:reviewId/comments', commentController.addCommentToReview);
+router.get('/reviews/:reviewId/comments', commentController.getCommentsByReviewId);
 
 module.exports = router;

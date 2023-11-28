@@ -38,7 +38,12 @@ export class ComentariosComponent {
         console.log('Comentario agregado:', response);
       });
 
-      this.commentService.getCommentsForReview(this.reviewId.toString())
+      this.showComment();
+
+  }
+
+ async showComment(){
+  this.commentService.getCommentsForReview(this.reviewId)
       .subscribe(
         (comments) => {
           this.comments = comments;
@@ -47,7 +52,6 @@ export class ComentariosComponent {
           console.error('Error al obtener comentarios:', error);
         }
       );
-
   }
 }
 
