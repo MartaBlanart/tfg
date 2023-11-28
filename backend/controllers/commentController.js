@@ -4,22 +4,13 @@ const User = require('../model/users');
 
 async function addCommentToReview(req, res) {
     try {
-        // Obtén el ID y el nombre de usuario del usuario autenticado
-        const userId = req.userId; // Utiliza req.userId obtenido del middleware
-        const user = await User.findById(userId);
         
-        if (!user) {
-            return res.status(401).send({
-                message: 'Unauthenticated'
-            });
-        }
-
-        const username = user.name;
-
+        console.log(req.params);
+        const username = req.body.username;
+        console.log(username + '-------------')
         // Crear el comentario
         const comment = new Comment({
             reviewId: req.params.reviewId,
-            userId: userId,
             username: username,
             content: req.body.content,
         });

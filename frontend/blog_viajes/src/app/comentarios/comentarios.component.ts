@@ -15,8 +15,9 @@ interface CommentData {
   styleUrls: ['./comentarios.component.scss']
 })
 export class ComentariosComponent {
-  @Input() reviewId!: number;// Usa el operador '!' para indicar a TypeScript que será inicializado
-  newComment: string = ''
+  @Input() reviewId!: number;
+  newComment: string = '';
+  comments: Comment[] = [];
 
   constructor(
     private commentService: CommentService,
@@ -25,21 +26,31 @@ export class ComentariosComponent {
   ) {}
   async addComment() {
 
-    console.log("---------------------------------------------------")
-    var userName = "";
+
     var user: User =await this.registerService.getObtenerUsuario();
-    console.log("---------------------------------------------------")
-    console.log(user)
 
-    const commentData: CommentData = { content: this.newComment, username: userName };
 
+    const commentData: CommentData = { content: this.newComment, username: user.name };
+    console.log(commentData);
+    console.log(this.reviewId);
     this.commentService.addCommentToReview(this.reviewId, commentData)
       .subscribe((response) => {
         console.log('Comentario agregado:', response);
-        // Puedes hacer algo después de agregar el comentario, si es necesario
       });
+
+      this.commentService.getCommentsForReview(this.reviewId.toString())
+      .subscribe(
+        (comments) => {
+          this.comments = comments;
+        },
+        (error) => {
+          console.error('Error al obtener comentarios:', error);
+        }
+      );
+
   }
 }
+
 
 
 
