@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 import { User } from '../model/user.model';
 
 @Injectable({
@@ -25,11 +25,11 @@ export class LoginServiceService {
   }
 
   getUser(): Observable<any> {
-    const token = this.getToken(); 
+    const token = this.getToken();
     console.log('Este es el token:' + token);
     if (!token) {
       console.error('No se ha podido obtener el token');
-      return of(null);
+      return throwError('No token available');
     } else {
       const headers = new HttpHeaders({
         'Content-Type': 'application/json',
@@ -47,6 +47,7 @@ export class LoginServiceService {
     return new Promise((resolve, reject) => {
       this.getUser().subscribe(
         (userData: any) => {
+
           const user: User = {
             email: userData.user.email,
             name: userData.user.name,

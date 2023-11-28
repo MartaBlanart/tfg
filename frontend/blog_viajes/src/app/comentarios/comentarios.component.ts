@@ -28,33 +28,20 @@ export class ComentariosComponent implements OnInit{
     this.showComment();
   }
   async addComment() {
+    var token = this.registerService.getToken();
 
-    try {
-    var user: User =await this.registerService.getObtenerUsuario();
-    console.log("holapepito");
-    if(!user){
-      console.log("HOLA!");
-      this.modalService.openLoginModal();
-    } else{
-      console.log("HOLA2!");
+    if(token){
+      var user: User =await this.registerService.getObtenerUsuario();
       const commentData: CommentData = { content: this.newComment, username: user.name };
-      console.log(commentData);
-      console.log(this.reviewId);
       this.commentService.addCommentToReview(this.reviewId, commentData)
         .subscribe((response) => {
           console.log('Comentario agregado:', response);
           this.showComment();
           this.newComment='';
         });
+    }else{
+      this.modalService.openLoginModal();
     }
-  } catch (error) {
-    console.error('Error in addComment:', error);
-  }
-
-
-
-
-
   }
 
  async showComment(){
