@@ -63,7 +63,7 @@ export class LoginComponent {
   }
   userLogged(): Promise<LoginComponent> {
     return new Promise((resolve, reject) => {
-      // Verifica si hay un token antes de hacer la solicitud al servidor
+
       this.registerService.getUser().subscribe({
         next: (response) => {
           console.log('Obtencion de usuario correcto', response);
@@ -71,18 +71,18 @@ export class LoginComponent {
           if (response && response.user) {
             const userName = response.user;
 
-            resolve(userName); // Resuelve la promesa con el nombre del usuario
+            resolve(userName);
           } else {
             console.error('Usuario no encontrado en la respuesta del servidor.');
-            reject('Usuario no encontrado'); // Rechaza la promesa con un mensaje de error
+            reject('Usuario no encontrado');
           }
         },
         error: (error) => {
           console.error('Error en el inicio de sesión', error);
-          reject(error); // Rechaza la promesa con el error recibido
+          reject(error);
         },
         complete: () => {
-          // Puedes realizar acciones adicionales después de la operación de inicio de sesión
+          
         }
       });
     });
