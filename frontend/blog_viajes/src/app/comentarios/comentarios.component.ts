@@ -1,29 +1,30 @@
 // comentarios.component.ts
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CommentService } from '../comment.service';
 import { LoginServiceService } from '../servicios/register-service.service';
-import { User } from '../user/user.model';
+import { User } from '../model/user.model';
+import { CommentData } from '../model/comment.model';
 
-interface CommentData {
-  content: string;
-  username: string;
-}
+
 
 @Component({
   selector: 'app-comentarios',
   templateUrl: './comentarios.component.html',
   styleUrls: ['./comentarios.component.scss']
 })
-export class ComentariosComponent {
+export class ComentariosComponent implements OnInit{
   @Input() reviewId!: number;
   newComment: string = '';
-  comments: Comment[] = [];
+  comments: CommentData[] = [];
 
   constructor(
     private commentService: CommentService,
     private registerService: LoginServiceService
 
   ) {}
+  ngOnInit() {
+    this.showComment();
+  }
   async addComment() {
 
 
@@ -36,9 +37,11 @@ export class ComentariosComponent {
     this.commentService.addCommentToReview(this.reviewId, commentData)
       .subscribe((response) => {
         console.log('Comentario agregado:', response);
+        this.showComment();
+        this.newComment='';
       });
 
-      this.showComment();
+
 
   }
 

@@ -1,5 +1,8 @@
-<div>
+<div >
+<h1>Comentarios</h1>
+<div *ngFor="let comment of comments" class="card">
+  <p> {{ comment.username }} : {{ comment.content }}</p>
+</div>
   <input type="text" [(ngModel)]="newComment" placeholder="Nuevo comentario">
-  <button (click)="addComment()">Agregar Comentario</button>
-
+  <button class="buttonComment" (click)="addComment()">Agregar Comentario</button>
 </div>

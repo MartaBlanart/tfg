@@ -8,8 +8,6 @@ import { Observable } from 'rxjs';
 })
 export class CommentService {
   private apiUrl = 'http://127.0.0.1:443/api';
-  comments: Comment[] = [];
-
 
   constructor(private http: HttpClient) {}
 
@@ -18,10 +16,9 @@ export class CommentService {
     return this.http.post(url, commentData);
   }
 
-  getCommentsForReview(reviewId: number): Observable<Comment[]> {
+  getCommentsForReview(reviewId: number): Observable<any> {
     const url = `${this.apiUrl}/reviews/${reviewId}/comments`;
-    return this.http.get<Comment[]>(url);
+    return this.http.get(url);
   }
+
 }
-
-
