@@ -4,6 +4,7 @@ import { PhotoService } from '../servicios/photo-servic.service';
 import { Router } from '@angular/router';
 import { LoginServiceService } from '../servicios/register-service.service';
 import { catchError } from 'rxjs';
+import { ModalService } from '../modal.service';
 
 
 
@@ -16,12 +17,9 @@ import { catchError } from 'rxjs';
 export class MenuNavComponent implements OnInit  {
 
   welcomeMessage: string = '';
-
-  modalLoginOpen = false;
-
   mostrarBotonLogin: boolean = true;
-  constructor(public router: Router,  public registerService: LoginServiceService){
 
+  constructor(public router: Router,  public registerService: LoginServiceService, public modalService:ModalService){
   }
   ngOnInit() {
     this.registerService.getObtenerUsuario().then(
@@ -55,15 +53,6 @@ export class MenuNavComponent implements OnInit  {
   ocultarBotonLogin() {
     this.mostrarBotonLogin = !this.mostrarBotonLogin;
   }
-  openLoginModal() {
-    this.modalLoginOpen = true;
-
-  }
-
-  closeLoginModal() {
-    this.modalLoginOpen = false;
-  }
-
 
 }
 

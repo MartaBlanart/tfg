@@ -20,12 +20,12 @@
       <a routerLink="/sobre-mi">Sobre mí</a>
     </div>
 
-    <button *ngIf="mostrarBotonLogin" (click)="openLoginModal()" class="login"><i class="fa-solid fa-user"></i> Iniciar sesión</button>
+    <button *ngIf="mostrarBotonLogin" (click)="this.modalService.openLoginModal()" class="login"><i class="fa-solid fa-user"></i> Iniciar sesión</button>
     <div class="welcome" *ngIf="!mostrarBotonLogin">
      {{ welcomeMessage }}
     <button *ngIf="!mostrarBotonLogin" (click)="logOut()" class="logout">Cerrar sesión <i class="fa-solid fa-right-from-bracket"></i></button>
   </div>
-   <app-login *ngIf="modalLoginOpen" (closeModalEvent)="closeLoginModal()"></app-login>
+   <app-login *ngIf="this.modalService.modalLoginOpen" (closeModalEvent)="this.modalService.closeLoginModal()"></app-login>
 
 
 
