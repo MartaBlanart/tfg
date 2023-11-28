@@ -1,7 +1,9 @@
 const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 const User = require('../model/users');
+const Comment = require('../model/comment');
 const jwt = require('jsonwebtoken');
+const commentController = require('../controllers/commentController');
 const cors = require('cors');
 
 // Configuración básica de CORS
@@ -110,4 +112,8 @@ router.post('/logout', (req, res) => {
 });
 
 router.options('/register', cors());
+
+router.post('/reviews/:reviewId/comments', commentController.addCommentToReview);
+router.get('/reviews/:reviewId/comments', commentController.getCommentsByReviewId);
+
 module.exports = router;

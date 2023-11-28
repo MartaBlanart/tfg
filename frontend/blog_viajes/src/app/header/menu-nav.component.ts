@@ -23,9 +23,30 @@ export class MenuNavComponent implements OnInit  {
   constructor(public router: Router,  public registerService: LoginServiceService){
 
   }
-  ngOnInit(): void {
+  ngOnInit() {
+    this.registerService.getObtenerUsuario().then(
+      (userName) => {
+        console.log('Nombre de usuario obtenido:', userName);
 
+        if (userName) {
+          // Usuario encontrado
+          this.ocultarBotonLogin();
+          this.welcomeMessage = 'Bienvenid@ ' + userName.name;
+        } else {
+          // Usuario no encontrado
+          this.mostrarBotonLogin;
+        }
+      },
+      (error) => {
+        console.error('Error en el inicio de sesión', error);
+        // Manejar el error según tus necesidades
+      }
+    );
   }
+
+
+
+
 
   logOut(){
     this.registerService.clearToken();
@@ -42,7 +63,6 @@ export class MenuNavComponent implements OnInit  {
   closeLoginModal() {
     this.modalLoginOpen = false;
   }
-
 
 
 }

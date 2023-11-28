@@ -8,6 +8,13 @@ h2{
 
 }
 
+
+.card {
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
 .comment {
   width: 800px;
   margin-bottom: 10px;
@@ -15,9 +22,7 @@ h2{
 }
 
 .buttonComment{
-  margin-bottom: 10px;
-  padding: 10px;
-  border-radius: 5%;
-  border: none;
-  background-color:  #c9d8e2;
+  margin-left:5px;
+  background-color: rgb(96, 191, 255);
+
 }

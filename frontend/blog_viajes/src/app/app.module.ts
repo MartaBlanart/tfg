@@ -26,6 +26,7 @@ import { MadridComponent } from './madrid/madrid.component';
 import { CookieService } from 'ngx-cookie-service';
 import { ComentariosComponent } from './comentarios/comentarios.component';
 import { RegisterComponent } from './register/register.component';
+import { CommentFormComponent } from './comment-form/comment-form.component';
 
 
 
@@ -45,6 +46,7 @@ import { RegisterComponent } from './register/register.component';
     MadridComponent,
     ComentariosComponent,
     RegisterComponent,
+    CommentFormComponent,
 
 
 

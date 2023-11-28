@@ -2,7 +2,10 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors=require('cors');
-const cookieParser=require('cookie-parser')
+const cookieParser=require('cookie-parser');
+const commentController = require('./controllers/commentController');
+
+
 
 mongoose.connect('mongodb://127.0.0.1:27017/appViajes', {
     useNewUrlParser: true,
